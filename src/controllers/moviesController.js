@@ -1,4 +1,4 @@
-const db=require('../database/models/index');
+const db=require('../database/models');
 
 const movies={
     list: (req,res)=>{
@@ -34,11 +34,9 @@ const movies={
     },
     recomended: (req,res)=>{
         db.Movie.findAll({
-            where:{
                 order: [
                     ['release_date','DESC'],
-                       ]
-            },
+                       ],
             limit: 5
         })
         .then(resultados=>{

@@ -1,31 +1,28 @@
 module.exports = (sequelize, dataTypes) => {
     const Actor = sequelize.define("Actor", {
         id: {
-          autoIncrement: true,
-          primaryKey: true,
-          type: dataTypes.INTEGER,
+            type: dataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
         },
-        created_at:{
-            type: dataTypes.DATE
-        },
-        updated_at:{
-            type: dataTypes.DATE
-        },
-        first_name:{
+        first_name: {
             type: dataTypes.STRING
         },
-        last_name:{
+        last_name: {
             type: dataTypes.STRING
         },
-        rating:{
+        rating: {
             type: dataTypes.DECIMAL
         },
-        favorite_movie_id:{
+        favorite_movie_id: {
             type: dataTypes.INTEGER
         }
-      },{
-          tableName: `actors`,
-          timestamps: true,
-      });
-      return Actor;
-    };
+    }, {
+        tableName: `actors`,
+        timestamps: true,
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
+        deletedAt: false
+    });
+    return Actor;
+};

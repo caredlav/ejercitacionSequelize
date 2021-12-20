@@ -1,37 +1,39 @@
 module.exports = (sequelize, dataTypes) => {
     const Movie = sequelize.define("Movie", {
         id: {
-          autoIncrement: true,
-          primaryKey: true,
-          type: dataTypes.INTEGER,
+            type: dataTypes.BIGINT(10),
+            primaryKey: true,
+            autoIncrement: true,
+            allowNull: false,
         },
-        created_at:{
-            type: dataTypes.DATE
+        title: {
+            type: dataTypes.STRING(500),
+            allowNull: false
         },
-        updated_at:{
-            type: dataTypes.DATE
+        rating: {
+            type: dataTypes.DECIMAL(3, 1),
+            allowNull: false
         },
-        title:{
-            type: dataTypes.STRING(500)
+        awards: {
+            type: dataTypes.BIGINT(10),
+            allowNull: false
         },
-        rating:{
-            type: dataTypes.DECIMAL(3,1)
+        release_date: {
+            type: dataTypes.DATEONLY,
+            allowNull: false
         },
-        awards:{
-            type: dataTypes.INTEGER
+        length: {
+            type: dataTypes.BIGINT(10)
         },
-        release_date:{
-            type: dataTypes.DATE
-        },
-        length:{
-            type: dataTypes.INTEGER
-        },
-        genre_id:{
-            type: dataTypes.INTEGER
+        genre_id: {
+            type: dataTypes.BIGINT(10)
         }
-      },{
-          tableName: `movies`,
-          timestamps: true,
-      });
-      return Movie;
-    };
+    }, {
+        tablename: "movies",
+        timestamps: true,
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
+        deletedAt: false
+    });
+    return Movie;
+};

@@ -1,28 +1,25 @@
 module.exports = (sequelize, dataTypes) => {
     const Genre = sequelize.define("Genre", {
         id: {
-          autoIncrement: true,
-          primaryKey: true,
-          type: dataTypes.INTEGER,
+            type: dataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
         },
-        created_at:{
-            type: dataTypes.DATE
-        },
-        updated_at:{
-            type: dataTypes.DATE
-        },
-        name:{
+        name: {
             type: dataTypes.STRING(100)
         },
-        ranking:{
+        ranking: {
             type: dataTypes.INTEGER
         },
-        active:{
+        active: {
             type: dataTypes.INTEGER
         }
-      },{
-          tableName: `genres`,
-          timestamps: true,
-      });
-      return Genre;
-    };
+    }, {
+        tableName: `genres`,
+        timestamps: true,
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
+        deletedAt: false
+    });
+    return Genre;
+};
